@@ -31,6 +31,13 @@ public abstract class BaseCustomerManager implements ICustomerService{
 	//extend eden classlar ile govdeli metodlarını paylasan , kendisini extend eden classların referansını tutan ama aynı zamanda da bir soyut class oluyor.
 	//Sonuc olarak Manager classların interface'i implemente ediyor ama interface base class ihtiyacını karşılamıyor.
 	
+	//ÇOK ÖNEMLİ !!!
+	//Senaryo gereği NeroCustomerManager ve StarbucksCustomerManager classları veri tabanına kullanıcı kaydetme işlemlerini aynı tabloya aynı şekilde 
+	//yaptığı için base bir abstract class'a ihtiyaç duyuldu. Eğer NeroCustomerManager ve StarbucksCustomerManager classları veriyi farklı şekillerde farklı
+	//tablolara kaydetseydi bu class'a gerek kalmayacaktı NeroCustomerManager ve StarbucksCustomerManager classlarının ICustomerService'i direkt olarak implemente
+	//etmesinde bir sakınca ortaya çıkmayacaktı. Yani her durumda her zaman abstract class kullanmalıyız classlarımız interfaceleri dolaylı yoldan abstract 
+	//class üzerinden implemente etsin diye bir şart çok yanlış olur. Eğer ortak metodlar varsa metodların içeriği farklıysa interface'i dolaylı yoldan miras almaya
+	//yani base bir abstract class'a ihtiyacımız yok. 
 	
 	//C#'ta bu base'deki metodu bu class'ı extend eden metodlarda override edebilmek icin void'in soluna virtual anahtar kelimesi geliyor diğer türlü
 	//bu metodu bu class'ı extend eden metodlarda override edemeyiz ama Java'Da boyle bir parametreye ihtiyac yok override islemi icin.
